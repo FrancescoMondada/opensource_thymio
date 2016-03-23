@@ -1,0 +1,643 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{subfig}
+\usepackage{graphicx} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{url}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+
+\title{\LARGE \bf
+The Thymio robot, open source hardware for formal education
+}
+
+
+\author{Francesco Mondada$^{1}$, Michael Bonani$^{2}$, Fanny Riedo$^{2}$, Philippe~Rétornaz and Stéphane Magnenat$^{1}$% <-this % stops a space
+\thanks{*This research was supported by the Swiss National Center of Competence in Research ”Robotics”.}% <-this % stops a space
+\thanks{$^{1}$Francesco Mondada and Stéphane Magnenat are with the Laboratoire de Syst\`emes Robotiques,
+        Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL), Switzerland
+        {\tt\small francesco.mondada@epfl.ch} and {\tt\small stephane.magnenat@epfl.ch}}%
+\thanks{$^{2}$Michael Bonani and Fanny Riedo are with Mobsya Association, Ecublens, Switzerland
+        {\tt\small michael.bonani@mobsya.org} and {\tt\small fanny.riedo@mobsya.org}}%
+}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{abstract}
+%Mobile robots are interesting tools for education because of both the enthusiasm they raise and the multidisciplinary nature of their technology.
+%However, because of their price, complexity, bias towards specific groups (boys), and unproved educational value, they are still seldom used in schools and edutainment.
+%This paper presents a system-design approach and the resulting Thymio robot that tackle these problems in a holistic way.
+%We show how this strategy achieved a low price leading to a high demand and raising the interest of teachers.
+%The robot and its development environment are open source and the whole project follows an open distribution and participative model.
+%Finally, we show deployment statistics proving that the robot is gender- and age-neutral and preliminary results towards assessing the educational value of robots.
+%\end{abstract}
+
+
+\section{Introduction}
+
+Mobile robots are interesting tools for education because of both the enthusiasm they raise and the multidisciplinary nature of their technology.
+Because autonomous mobile robots sense the environment and take actions based on their perception, they seem to display \emph{intentions of their own}.
+This fascinates the users of the robot and creates feelings of accomplishment and power in the creators.
+The permeating presence of robots in science fiction and their projected use in our society increases these emotions by giving a sense of touching the future. % SM: not so happy with my sentence here
+Children can spend hours looking at a robot interacting with its environment and adults can approach robots as a new hobby that replaces radio and electronics kits.
+Robots embed various technologies and therefore give access to a wide range of fields, such as complex mechanics, sensors, wireless transmission, mathematics, computer science, etc.
+The emotional potential of mobile robots and their varied technology makes them the ideal tool for education at large.
+
+Despite this potential, robots are still not widespread in schools as they could be and this for several reasons. Among them we can mention:
+\begin{enumerate}
+\item Although there are many robotic projects developing educational robots, few reach a sufficient maturity to become distributed and accessible to schools. 
+\item A robot performing interesting behaviors is a complex piece of technology and therefore expensive. 
+Indeed, for having an educational value and providing an interesting level of interaction, a robot must embed a wide set of sensors and actuators.
+Existing platforms with these features cost several hundred Euros.
+This prevents most schools, which have a limited budget for equipment, to acquire interesting robots.
+\item Introducing robotic tools into teaching activities requires investment in time and training for the teachers.
+In Europe, despite a trend in including more and more technological tools into the learning process, teachers are still insufficiently trained and are reluctant to introduce these tools in their teaching activity~\cite{CERI2008}.
+To be accepted by teachers, robots must be therefore both accessible with minimal effort and be associated with well prepared educational material. 
+Moreover an infrastructure should allow the exchange of educational material among the teachers.
+\item Robot construction, use, and programming is often perceived as a boyish activity in our society~\cite{leonard2009lego,nourbakhsh2009robot}.
+% For instance, several authors report that girls have such a perception of the LEGO Minstorms~\cite{leonard2009lego,nourbakhsh2009robot}.
+This strongly limits the potential of robots as general-purpose educational tools, especially in schools.
+\item Finally, many teachers are reluctant to follow volatile trends, especially if based on purely commercial arguments. Teachers prefer to invest in stable tools, and this is the opposite of todays consumer technology, often very volatile and based on continuos renewal rather than on durability.
+\end{enumerate}
+
+Open source hardware projects can address several of these issues in a different way than pure commercial products. 
+By open source hardware we understand, following the definition of the Open Source Hardware Association\footnote{\url{http://www.oshwa.org/definition/}}, ``hardware whose design is made publicly available so that anyone can study, modify, distribute, make, and sell the design or hardware based on that design''.
+In this paper, we show that this concept, implemented as a project in a community of users, developers and producers, brings a very interesting added value to the robot and to the educational methods. 
+This is illustrated by the results achieved with Thymio and is compared with the feedback of a group of engineers active in open source hardware design.
+We can well observe both similarities and differences between our education-centered project and other open source hardware projects, pointing to challenges and opportunities.
+More details on the robot and the related results can be found in conference papers~\cite{festival2011,thymio2012arsi}.  
+
+\section{Related Work}
+
+There is a very large number of publications presenting educational robots with different prices and features, from very low-cost systems targeting, for instance, education in Africa~\cite{Rubenstein2015,Gyebi2015} to extremely sophisticated humanoids~\cite{Hood2015,Mazzoni2016}.
+Among those, only very few are commercially available, limiting their validation by education scientists.
+This results in 90\% of publications about validation of educational results made on LEGO Mindstorm~\cite{benitti2012exploring}.
+The LEGO Mindstorm EV3\footnote{\url{http://mindstorms.lego.com}} is expensive ($\sim$400\,\$) but offers a wide range of possibilities, especially at the mechanical level using LEGO bricks and at the software level with its graphical programming environment. 
+At a lower price, LEGO proposes the WeDo system ($\sim$80\,\$).
+The WeDo is similar to EV3 but only reads one sensor and controls one actuator and must always be connected to a desktop computer.
+The BeeBot robot\footnote{\url{http://www.beebot.org.uk}} is a cheap ($\sim$90\,\$) autonomous system.
+However, it is not a real robot but rather an automaton: There is no perception of the environment, just a good encoder for precise movements and a simple programming interface based on buttons giving directions for the movements.
+
+Among these widely used robots, none is part of an open source hardware project.
+The only effort in this direction comes from LEGO, that made public all the schematics of the EV3 in an hardware developer kit, to allow the design of extensions. 
+Otherwise, only few educational robots are both used in schools and are issued from an open hardware project:
+Scribbler2, produced and sold by Parallax\footnote{\url{http://www.parallax.com}} ($\sim$180\,\$), is a 188~mm large robot, designed to run on the ground and equipped with few light sensors, one distance sensor, two ground sensors and few LEDs display.
+It runs on standard AA batteries and has a hacker port for interfacing electronic extensions.
+It is programmable with a graphic or text code interface.  
+The main weakness of Scribbler2 is its performance per price ratio and the limited compatibility with other systems. 
+The e-puck~\cite{mondada2009puck} robot is a robot targeting university-level education.
+Well equipped with sensors and actuators, modular and compact, it can be programmed with professional environments.
+Several simulators allow to run experiments of high complexity. 
+It's main weakness is its high price ($\sim$870\,\$).
+Finch\footnote{http://www.finchrobot.com/} ($\sim$99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
+This connection reduces electronics requirements, such as batteries or wireless communication, and allows to implement the control entirely on the computer.
+This results in a very broad set of possible programming languages available, the real force of this robot. 
+On the other hand the cable does not allow real autonomy and mobility of the robot.
+Finally the mBot\footnote{http://www.makeblock.cc/mbot/} is a mobile platform based on the Arduino board. 
+The very cheap and simple electronics allow to drastically reduce the price of the system ($\sim$75\,\$) but also reduces the perception possibilities to a couple of sensors. 
+
+In respect to these robots, Thymio has a compact size (120~mm), many interaction possibilities, an affordable price and a large set of sensors.
+It's design makes the best use of the recent cheap components coming from the explosive growth of the mobile devices market. 
+To the best of our knowledge, beside Thymio there are no educational products exploiting this and providing many sensors and actuators at a price below 130\,\$.
+
+For teachers, the motivation to use robotic tools in their classes depends on many factors \cite{chevalier2016}.
+Among them, the availability of material and training plays a key role.
+The BeeBot mentioned previously, because of its radical simplicity, is one of the tools that needs the least training. 
+Moreover its use in learning activities is based on a simple grid, allowing fast and easy integration in existing lessons.
+These are probably two important factors for its success in schools~\cite{2008highfield,2008demichele} and the availability of a rich set of educational material\footnote{\url{https://www.learningplace.com.au/deliver/content.asp?pid=38840} and \\ \url{http://beebots.skola.edu.mt/}}.
+However, the total lack of sensors reduces the BeeBot to an automaton, easy to use but nearly useless to introduce computational concepts.
+
+For more complex robots, both the development of educational material and the training of teachers requires a very important effort. 
+Beside the development of the material from a pedagogical point of view, education is very dependent from local educational programs and languages. 
+In the particular case of Switzerland, for instance, every of the 26 states composing the confederation has its own school program, and among the states there are three major official languages. 
+Educational material and the related training has therefore to be adapted for each situation.
+Even for large companies like LEGO this development is not affordable. 
+LEGO itself is moving in the direction of promoting communities of users \cite{Hienerth2014} and a form of user-producer interaction that is close to those of open hardware projects.
+The open source community regrouping developers, producers and final users is therefore a very interesting model to address the distributed development and sharing of educational material, and the diffusion of training sessions.
+Communities around projects like Arduino are extremely good examples of this type of mechanism \cite{Jamieson2010}.
+
+%Several initiatives have focused on increasing the rate of females in engineering in general and in robotics in particular~\cite{weinberg2007impact}.
+%Roberta~\cite{2010bredenfeld} is one of the largest and uses the LEGO Minstorms.
+%Recent work has shown that a different approach to robotics, for instance linking with arts and proposing creative workshops~\cite{nourbakhsh2009robot}, can improve the attractiveness for girls. 
+%Some researchers have created hardware tailored to crafting activities, such as the PicoCricket~\cite{2008rusk} which is close to the NXT but does not require LEGO construction.
+%Compared to these works, Thymio aims at being attractive for both genders.
+
+%Several studies have measured the impact of the use of robots on children~\cite{weinberg2007impact,nourbakhsh2009robot,sinkele2010effectiveness}, but none of these provide quantitative data on the usage of the different features of the robot.
+%On the contrary, Thymio can log the usage of its features, providing a tool to monitor the progress of children and to investigate the value of different curricula.
+
+
+\section{Design choices}
+
+\begin{figure}
+   \centering
+	\includegraphics[width=.6\columnwidth]{figures/front_2016}
+	\vskip 1.5em
+	\includegraphics[width=\columnwidth]{figures/Thymio_II_sensors-actuators-eng}
+	\caption{The Thymio robot and its main components.}
+	\label{fig:schematique}
+\end{figure}
+
+
+We designed the Thymio robot along seven main axes: a low price to address a larger number of users, a feature set that suits both genders and multiple ages from young children to adults, a combination of sensors, actuators, and programming features that facilitates learning, a mechanical design that allows creative extensions, a set of ready-to-use behaviors to get a demonstration right out of the box, an accessible programming environment, and an open source  community contributing to the design and disseminating the results.
+The result is a miniature (10\,cm) differential-wheeled robot suited for use on a desktop.
+The robot is robust enough to be mishandled by children, as it can fall from a table without breaking itself.
+It features a translucent white hull and a wide range of sensors and actuators (see \ref{fig:schematique}).
+The robot embeds a battery, rechargable by \textsc{usb}, that provides an autonomy of about 2 hours.
+
+\subsection{Low Price}
+
+Our main concern during the mechatronic design of Thymio was to keep a low production cost. 
+Price is a primary factor for the adoption of the robot by schools.
+In our previous experience with designing robots, most of the costs was due to the electronics and the sensors~\cite{thesis_michael}, not to the mechanical parts.
+As we wanted Thymio to be an affordable robot, we selected electronic components with great care and explored different design solutions in order to limit the number of expensive components.
+In particular, we focused on low-cost sensors that allow rich interaction possibilities, with both the environment and the user.
+The resulting Thymio robot possesses a large number of sensors:
+Seven horizontal infrared distance sensors, with a range of about 13\,cm.
+They enable many interactions with the environment, like following an object or avoiding an obstacle.
+Two ground infrared sensors allow to follow a line or to detect the edge of a table.
+A three-axis accelerometer measures the orientation of the robot with respect to gravity, and can detect shocks and free falls.
+Five capacitive touch buttons organized as an arrow form an intuitive user interface.
+Compared to physical buttons, these simplify the plastic hull of the robot and make it more robust.
+A remote control receiver provides additional distant buttons.
+A microphone can record sounds and detect claps. 
+Finally, a thermistor measures temperature.
+Most of these sensors cost less then 0.2\,\$, the most expensive being the accelerometer with a cost of about 0.8\,\$, which is an acceptable price given the possibilities it brings to the robot.
+The omnipresence of this type of sensors in smartphones and compact cameras has drastically lowered their prices over the last decade.
+We also chose low-cost toy motors and control them in speed (max. 13\,cm/s) using a custom-designed electronics.
+By measuring the back-electromotive force, speed control is possible without additional encoders.
+
+However, choosing the optimal combination of sensors and processor is a difficult problem, as hardware interfaces are limited on a microcontroller and therefore compromises must be made.
+We evaluated several microcontrollers and chose the PIC24F from Microchip because it integrates a USB interface and can drive capacitive touch buttons directly, saving additional components. 
+This microcontroller controls all sensors and actuators, excepted the battery recharging logic, which uses a specific chip for safety reasons.
+This choice of a single microcontroller led us to non-trivial design decisions like using low-cost shift registers to drive the many LEDs.
+Moreover, instead of directly connecting the infrared sensors to an analogical input, we interface them using a comparator that transforms the analogical signal into a binary one with a pulse having a duration proportional to the intensity of the original signal~\cite{wanda}. 
+This design saves \textsc{cpu}-time, reduces power consumption (it allows a shorter infrared pulse than with an analogical design) and allows to use the sensor for communication.  
+
+In addition, we conceived Thymio to fit the requirements of series production.
+This is a very critical choice in open source hardware projects, and we will discuss this issue in detail in the next section.
+We produced until now more than 10'000 robots by batches of 1'000 units.
+Because manual work is expensive in western countries, we produce through subcontractors in China.
+Indeed, while most of the electronics consists of \textsc{smd} components mounted by a robot, some are soldered (sensors, microphone, LEDs) by hand and the robot is also assembled by hand.
+We streamlined the production of plastic parts (Thymio has only 5 parts while our previous prototype had 11) and opted for injection molding. 
+The plastic hull consists of two main parts screwed together to facilitate the vertical assembly and disassembly of the robot.
+Moreover, when selecting features we took into consideration the complexity of the injection mold.
+
+\subsection{Multi-age and Gender-neutral Feature Set}
+
+While we optimized Thymio for cost, we also targeted a large range of users.
+The variety of sensors and ways of interacting with the robot make Thymio accessibly to girls and boys of different age groups.
+The white hull is initially neutral and children can choose their own color using the \textsc{rgb} LEDs.
+The robot can be used from children as young as 6 years old to adults:
+The youngest play with the robot through a set of basic behaviors (see section \ref{sec:behaviors}) and the older can program it (see section \ref{sec:aseba}).
+The different basic behaviors are selectable using the capacitive buttons and show some of the capabilities of the robot, such as obstacle avoidance, slope climbing, etc.
+By interacting with the different behaviors, for instance by blocking the robot with the hand and seeing it avoiding it, children can discover the concept of the sensory-motor loop. 
+As every behavior has a different color, children can also understand that different \emph{programs} run on the robot.
+Children around 6 can use Thymio as a support for handicrafts or construction.
+For example, they can create kinetic sculptures.
+For children above 9 years old and adults, Thymio is suited to introduce programming.
+Learners can start by programming new interactive behaviors and can go on with constructing around the robot and programming a behavior that interplays with the construction.
+High-school and university students can use the robot to learn advanced robotics concepts through the integration with \textsc{ros}~\cite{quigley2009ros}.
+Finally, because of the open-source and open-hardware nature of the project, advanced programmers can improve their skills in C by modifying the firmware or in electronics by disassembling the robot.
+
+\subsection{Facilitating Learning}
+
+When designing Thymio, we took care of providing many incentives for the users to learn new things throughout their direct interaction with the robot.
+This translates into specific hardware and software choices.
+
+At the hardware level, we render visible the activity of the sensors by adding a LED next to each, for a total of 39 LEDs.
+These LEDs locally color the hull and allow the user to see immediately where and when the robot perceives a change in its environment.
+There is a LED next to each proximity sensor that lights up as soon as an object is close enough to be seen, and shines brighter the closer the object gets.
+Similarly, a combination of blue and red LEDs show the temperature, and the infrared remote control receiver and the microphone both have LEDs that flash when they detect something.
+On the top of the robot, a circle of 8 LEDs shows the 3D inclination of the robot thanks to the accelerometer. 
+This circle is also used to reflect some of the behaviors of Thymio.
+Finally, two strong \textsc{rgb} LEDs color the whole top of the robot.
+In addition to a visual feedback, the capacitive buttons also have an acoustic feedback.
+The link between a sensor and its feedback can be turned off when programming the robot to use the LEDs and the loudspeaker for other purposes.
+
+At the software level, our programming environment (see section \ref{sec:aseba}) provides a set of tools enabling beginners to discover progressively the basic rules of programming using a graphical interface, then the construction of a syntax by graphic blocs, and finally a full coding environment with advanced debugging tools, such as real-time inspection of the variables of the robot and plotting features, providing a visual way to understand time-related concepts.
+
+\subsection{Promoting Creativity}
+
+We wanted the robot to be a starting point for the users to invent their own creations.
+Therefore, we thought Thymio as a support for handicrafts and constructions.
+Its white color is meant to be seen as a blank page that can be decorated and drawn upon, and its shape allows easy integration into a structure.
+The robot features a hole in its middle to insert a marker for drawing.
+It also has a slot for an SD card, allowing users to add their own sounds or to load a pre-compiled code by the simple insertion of a dedicated card.
+
+The square format of the hull allows to use the robot as a base for driving the user's own constructions.
+To that end, Thymio is compatible with LEGO bricks:
+There are four attachment positions on the top of the robot and two LEGO Technics crosses on each side.
+Additionally, the two wheels have attach points, which permits to use them to actuate elements elsewhere in the structure (see Figure \ref{fig:example-construction}, bottom left) or to lift the robot's own weight (see Figure \ref{fig:example-construction}, bottom right).
+Therefore we chose more powerful motors than strictly necessary to move the robot around.
+Both the hull and the wheels can be easily disassembled and replaced or augmented with 3D printed customized parts.
+Figure \ref{fig:3Dparts} shows an example of 3D printed accessory designed by a member of the community.
+Finally, it is possible to link several Thymio by software, allowing the creation of complex robotic structures.
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\columnwidth]{figures/3Dparts}
+\caption{Accessory (cable winder) built by 3D printing by a member of the community, Ezio Som\`a.}
+\label{fig:3Dparts}
+\end{figure}
+
+
+
+\subsection{Short time to demo}
+\label{sec:behaviors}
+
+Many existing robots need to be built or configured before having the first operational behavior. 
+This is a barrier for many users and we wanted to avoid it carefully, having a robot able to show interesting behaviors right out of the box.
+Therefore Thymio provides 6 different basic behaviors (see table \ref{tbl:basic-behaviors}), which are accessible as soon as the robot is started.
+These allow people encountering Thymio for the first time to immediately interact with it, while providing insights into the many possibilities of the robot.
+The behaviors are interactive and oriented towards the user. % SM: FIXME: not clear what "oriented towards the user" means
+For each behavior, the robot's body has a different color, allowing the user to easily recognize it.
+The user can navigate between the colors with the buttons and select the behavior she wants to use.
+Basic behaviors can be exploited in a construction to create reactivity without the use of programming (see Figure \ref{fig:example-construction}, top).
+
+\begin{table}
+\begin{tabularx}{\columnwidth}{@{}llll@{}}
+\toprule
+mode & color & sensors & behavior \\
+\midrule
+friendly & green & infrared (IR) & follows an object at distance \\
+explorer & yellow & IR & moves avoiding obstacles \\
+fearful & red & acc., IR & flees, notifies shocks and falls \\
+investigator & cyan & IR & follows a black track \\
+obedient & magenta & buttons, IR & follows moving orders \\
+attentive & blue & mic. & moves following sound \\
+\bottomrule
+\end{tabularx}
+\caption{The different basic behaviors with sensors used.}
+\label{tbl:basic-behaviors}
+\end{table}
+
+
+\subsection{Programming}
+\label{sec:aseba}
+
+Thymio runs the Aseba open-source programming environment~\cite{aseba}.
+Aseba is designed to enable novices to program robots easily.
+On the robot side, it provides a lightweight virtual machine that runs on microcontrollers like the PIC24F.
+A virtual machine allows instantaneous upload and safe execution of code.
+On the desktop side, Aseba provides an IDE which allows to program in a purely graphical mode, or using a scripting language (see Figure \ref{fig:aseba-studio}) or in a mixed way, assembling code in a graphical way using the blockly environment\footnote{\url{https://developers.google.com/blockly/}}.
+
+%The Aseba scripting language is a simple, imperative, Matlab-like language providing integers and arrays of integers as data types.
+%Common logical and mathematical operations are available as operators, and additional mathematical functions such as trigonometric ones are available as native functions.
+%These are functions implemented in native code and accessible from the virtual machine.
+%In Aseba, code blocks are associated to events, simplifying the writing of real-time behaviors.
+%Events are triggered by the robot's sensors or actuators.
+%The value of the sensors and actuators are available through pre-defined variables and native functions, which are robot-dependent and enumerated dynamically by the robot when the IDE connects.
+
+The IDE integrates a help documentation\footnote{currently English, French, and German}.
+In addition, the wiki pages of the project provide tutorials on programming with Thymio and a detailed description of the programming interface.
+%The latter was designed with consistency in mind: variables and functions are available in namespaces and similar features (such as the different LEDs) are accessed the same way.
+%It also provides native functions for school-level mathematics such as vector operations, trigonometry, statistics and functions such as sorting and random.
+
+%We expect the facilities that Aseba provides to allow text-based programming with reasonably young children, starting from around 10 years old, while still being interesting to older children and adults.
+Aseba integrates with \textsc{ros}~\cite{quigley2009ros} through the \emph{asebaros}\footnote{\url{http://www.ros.org/wiki/asebaros}} bridge.
+\textsc{Ros} is one of the most widely used software framework in robotics research, and this integration allows to run sophisticated algorithms, such as simultaneous localization and mapping, in conjunction with  Thymio.
+This makes the robot suitable for university-level education.
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\columnwidth]{figures/aseba-studio}
+\caption{Aseba Studio, the integrated development environment}
+\label{fig:aseba-studio}
+\end{figure}
+
+\section{Open source hardware, choices and impact}
+
+The choice of developing a robot within an open source hardware project has an impact on the robot design and the way this device is used in the community of users. 
+In this section we analyze more in detail the implications of this choice in the context of educational robotics.
+We compare these implications with the result of a survey we did among 25 people active in various open source hardware projects based on a worldwide call for contributions. 
+Among these 25 people, 6 are project leaders, 10 are part of the core design team, 6 are contributors and 3 are enthusiastic users.
+60\% of these respondents are between 25 and 35 years old and 80\% either work in an academic environment or are students. 
+
+\subsection{Motivation}
+
+When asked about their motivation to participate to open source hardware projects, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice. 
+A more abstract goal of improving our society is placed at the last position, as mentioned only by few respondents.
+
+\begin{figure}
+\centering
+\includegraphics[width=.7\columnwidth]{figures/motivation}
+\caption{Motivation of the people participating to the survey.}
+\label{fig:motivation}
+\end{figure}
+
+In the Thymio project, most contributors were hired for a research project developing the robot. 
+Therefore the link with the professional activity and the particular project is evident.
+On another side, the motivation of contributing to society is much stronger in our team, as developing a robot targeting education is a societal goal also.
+
+It is more interesting to look at what people expect as benefits in participating in such a project.
+Most of the answers mention impact, networking and learning. 
+In these answers we can observe both a technological component in getting better results and impact, and a relational component that is not in the basic definition of open hardware but results from the community created around the project. 
+People expect to work with other people to achieve more together, to create a network of competences or users, to learn through new experience and contacts. 
+
+In the Thymio project we had similar expectations, but with a very important additional element; we wanted a match between the non-profit nature of the project and the non-profit nature of education in general. 
+
+\begin{figure}
+\centering
+\includegraphics[width=.7\columnwidth]{figures/getout}
+\caption{Motivation of the people participating to the survey.}
+\label{fig:getout}
+\end{figure}
+
+\subsection{License of project and license of tools}
+
+When starting an open source hardware project, one of the typical questions is about which license to use when disseminating the project source files. 
+We will not discuss this matter here, as it is a very common and well covered issue. 
+
+There is another licensing issue which is not well known and that we discovered very late in our project: the constrains of the license of the mechanical and electronic CAD tools. 
+Indeed, asked about this issue, people in the field seems generally not aware of the fact that CAD license can be very restrictive in the way the source files can be published.
+Around the half or respondents to our survey, also among the project leaders, state that they were not aware that this could be an issue, and only one third checked the license of their CAD software. 
+Among the respondents, some stated that they did not checked the license because they were sure they can freely publish their design, but half of them are using software not allowing the publication of source files when using educational licenses, and all these respondents are academic or students.
+This issue is very serious, as most contributors of open source hardware projects are academic and use academic or educational licenses. 
+Most licenses do not allow to use the design created with this version of the software for commercial activities. 
+As producing or selling the product is part of the definition of open hardware, these licenses simply forbid publication under the standard open source hardware conditions. 
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\columnwidth]{figures/aware-license}
+\caption{Awarness about CAD tool licenses limitations by people participating to the survey.}
+\label{fig:aware}
+\end{figure}
+
+To clarify this issue we contacted twelve of the major editors of mechanical CAD and PCB routing software.
+We asked them if their educational license allows the publication of the source files, and we specified that the published files could have been downloaded by a company to produce the system.
+Figure \ref{fig:editors} summarize the result of this survey.
+Only three of the twelve editors have licenses allowing this type of publication. 
+Two others explicitly mentioned the possibility to ask for permission before publication.
+A large mechanical CAD editor was puzzled by our questions and after realizing the impact of the license, introduced a special condition allowing publication of files in clearly labeled open source hardware projects.
+In previous situations of open source publication, the same editor asked the universities to purchase commercial licenses to permit publication.
+This can multiply by a factor of some hundreds the price of the CAD license.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/table}
+\caption{Publication possibilities as function of the CAD editors.}
+\label{fig:editors}
+\end{figure}
+
+As a conclusion, this issue is totally underestimated by both people participating to the projects and by the CAD editors. 
+In a period where editors are looking for additional revenues and are attacking universities for abuse of licenses\footnote{We are aware, just in Switzerland, of two situations where large amounts of money are asked to universities for non-respect of software licenses.}, this can be a very dangerous situation.
+
+\subsection{Who produces the hardware}
+
+Among the fundamental choices when starting an open source hardware project, there is the type of production. 
+In the definition of open hardware we gave, it is stated that we should offer an ``hardware whose design is made publicly available so that anyone can ... make... the ... hardware ''.
+Behind the ``anyone'' should we consider every single person or only every company who want to produce the product?
+We opted for the second interpretation, for a reason of price and complexity of the product. 
+When looking for the best performance per price ratio, we decided to use techniques that require heavy equipment.
+For instance we decided to produce all mechanical parts by injection molds. 
+This ensures a price per part of some cents, which cannot be achieved by others techniques.
+Letting end-user produce their own parts would results in higher prices for less performances. 
+When looking at the results of the survey (see Figure \ref{fig:production}), we can observe that this seems to be the choice of a majority of the projects represented in our survey.
+Indeed, large open source hardware projects like Arduino are based on this model.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/production}
+\caption{Production methods in the projects mentioned by the people participating to the survey.}
+\label{fig:production}
+\end{figure}
+
+
+One could advocate that this choice of central production and sale of hardware can bring these robotic projects closer to standard commercial models, with users not feeling close to the developers.
+In our case we decided to counterbalance this apparently business oriented model by creating a non-profit association in charge of producing and selling the robots. 
+Of course anybody else could produce the Thymio based on more buiness-oriented models, but at least the initial production has been done respecting a coherent and global non-profit strategy, in line with educational values of the community of users.
+
+Another strong difference between a standard consumer product and our vision of open hardware, is that Thymio should be durable.
+Schools do not have large budget for technological tools and make strong investment in training of their teachers when adopting a new tool.
+Therefore the life time of the products should be as long as possible. 
+The open hardware approach gives to the user, or to a generic technician, better conditions to repair the system.
+Supporting this type of operation has an impact on the robot design; for instance Thymio can be easily opened with four standard screws, and we introduced connectors between key elements such as motors, speaker, or the battery and the main printed circuit. 
+
+Another key element in supporting repair by the users is calibration. 
+When choosing very low cost components, we get into large dispersion of characteristics. 
+In our case, for instance, the motors can have very different characteristics, resulting in the robot not going straight when asked to apply the same speed on both wheels. 
+To correct this, one interesting solution is to introduce factory calibration, storing correction factors that are specific for each robot, in the microcontroller memory . 
+To allow the user to replace a broken motor, it is essential to give him also the possibility to re-calibrate the robot and adjust the parameters of the new motors.
+This results in the design of calibration processes that can be performed by anyone, getting close to the original definition of open source hardware.
+
+\subsection{Validated positive results}
+
+
+Pushed by universities, like INRIA
+
+Example of canton de Geneve
+
+XXXXXXXXXXXXXXXXXX
+
+\subsection{Problems}
+
+Management of the community
+
+Documentation in many languages, due to end-users that are child
+
+Development of the project in the long term
+
+We are building an open community around the robot.
+A wiki\footnote{http://www.thymio.org} serves as a meeting point for the learners, the robot developers, and the teachers.
+It introduces the robot, explains the basic behaviors, gives access to the programming environment and its documentation, and provides code samples and examples of constructions.
+The wiki is open for editing by anyone, and although we initially provided most of the material, the other members of the community are starting to contribute.
+We expect it to ease the sharing of educational materials from the teachers interested in the project.
+To further contribute to the synergy between teachers and scientists, Thymio can write usage statistics on an \textsc{sd} card using a manual and voluntary operation.
+This will allow us to assess the usefulness of the different features of the robot in a quantitative way.
+
+We distribute the complete source code of both Thymio and the programming environment as \emph{open source} on the wiki.
+Furthermore, the mechanical and electronic design is available as \emph{open hardware}.
+Beside being of educational value, anyone can see how a robot works from inside, this further reduces the production cost as we did not deposit any expensive patent.
+Finally, the Thymio robot is produced by a non-profit association, reducing the cost of the manufacturing and the production management.
+
+\begin{figure}
+\includegraphics[width=.49\columnwidth]{figures/poisson-thymio}\hfill\includegraphics[width=.49\columnwidth]{figures/top-traineau}
+\vskip .5em
+\includegraphics[width=.49\columnwidth]{figures/moving-heli}\hfill\includegraphics[width=.49\columnwidth]{figures/funi-overview}
+\caption{Examples of constructions using Thymio}
+\label{fig:example-construction}
+\end{figure}
+
+
+\subsection{Impact and validation}
+
+\begin{table}
+\centering
+\begin{tabularx}{\columnwidth}{ll}
+\toprule
+Description & Price (USD)\\
+\midrule
+electronic components & 15\,\$ \\
+microcontroller & 4 \$ \\
+motors & 2 \$ \\
+plastic parts (hull, wheels, and light guides) & 4 \$ \\
+assembling & 8 \$ \\
+transport & 2 \$ \\
+\bottomrule
+Total & 35 \$ \\
+\end{tabularx}
+\caption{Production cost of Thymio.}
+\label{tbl:thymio-price}
+\end{table}
+
+We reached our price target thanks to our careful selection of components and our production in China.
+Thymio costs 35\,\$ per unit to produce in batch of 1\,k units (see \ref{tbl:thymio-price}), with fixed fees of 15\,k\,\$ (13\,k\,\$ for the mold and 2\,k\,\$ for the \textsc{ce} certification).
+This allows a selling price of 100\,CHF ($\approx$ 106\,\$).
+This small ratio of selling-over-production price is made possible by our non-profit business model.
+
+
+\begin{table}
+\begin{tabularx}{\columnwidth}{@{}lll@{}}
+\toprule
+School & School type & Town in Switzerland \\
+\midrule
+HEPL (several units) & Teacher training & Lausanne  \\
+EP Cossonay-Penthalaz & Primary school & Penthalaz  \\
+EPS Ecublens & Primary and Secondary & Ecublens  \\
+Collège de Vevey & Secondary & Vevey  \\
+Collège Sainte Croix & Secondary & Fribourg  \\
+Fondation de Verdeil & Specialized school & Lausanne  \\
+Gymnase de Beaulieu & Baccalaureate school & Lausanne  \\
+Gymnase de Provence & Baccalaureate school & Lausanne  \\
+Lycée Blaise-Cendras & Baccalaureate school & La Chaux-de-Fonds  \\
+edurobot.ch & Network of teachers & Vaud  \\
+\bottomrule
+\end{tabularx}
+\caption{Schools and groups of teachers who develop educational material for the Thymio.}
+\label{tbl:schools}
+\end{table}
+
+
+We deployed more than 800 Thymio in less than one year of activity.
+The robot has been distributed in workshops at the occasion of public events like the \textsc{epfl} robotics festival~\cite{festival2011} or the \textsc{eth} Zürich Scientifica and in public schools.
+The reception by the public was extremely positive: workshop slots (\textsc{epfl}:\,284, \textsc{eth}:\,125) were all completely filled and additional robots (\textsc{epfl}:\,155, \textsc{eth}:\,82) that we made available for purchase were sold out.
+More than 40 teachers acquired a Thymio in their professional context.
+Ten schools (see \ref{tbl:schools}) are exploiting hundred Thymio and are actively developing educational material in collaboration with us.
+These schools target different ages and educational levels.
+At the primary-school level, for instance, teachers use Thymio to explore the notion of space and the scientific methods.
+They appreciate the integration of rational and spacial thinking that Thymio allows, but also its possibilities to concretely illustrate abstract concepts, such as directions in the teaching of foreign languages.
+They use the sensors and their link to behavior changes as support for the methodological understanding of a phenomenon by children. %SM: FIXME: not so clear: methodological understanding 
+Informal feedback from teachers shows that the direct visualization of sensor values on the robot's body dramatically increases the understanding of the working principles of the sensors themselves and of the robot's behavior in general. 
+%This decreases the time spent in explaining the robot functionalities.
+We attribute this effect to the good capacity of humans to detect correlations, allowing them to intuitively link variations in the environment, sensor responses and changes in the behavior. 
+Most of the Thymio robots sold in schools are used in baccalaureate programming courses. 
+In this context, Thymio offers an exceptional functionalities-by-price ratio and is used in computer-science classes to learn programming.
+The aids of the programming environment, like real-time visualization of sensor data, are very appreciated.
+
+%The current deployment speed is limited by our production capacity, and we will make the robot available through a web shop once we are able to produce fast enough.
+
+% couleur + viewing of behaviour, immediatety, real-time understanding
+% why robot detects table edge
+% human capabilities to detect correlations
+
+\begin{figure}
+\includegraphics{figures/age-hist}
+\includegraphics{figures/sex-wrt-age}
+\includegraphics{figures/appreciation-wrt-age}
+\caption{Distribution of ages (top), gender in function of age (middle), and appreciation in function of age (bottom).}
+\label{fig:results-festival}
+\end{figure}
+
+At the occasion of the \textsc{epfl} robotics festival, we have conducted a survey to assess the appreciation of the robot and the educative contribution of a 80\,min programming workshop~\cite{thymio2012arsi}, whose goal was to introduce children to basic robotics concepts.
+To quantitatively compare the different variables of the survey, we use the Spearman's rank correlation test.
+A total of 116 participants took part in the workshop and filled the survey.
+Most are children between 8 and 14 years old (\ref{fig:results-festival}, top).
+91 participants are boys, 22 girls, and 3 unknown.
+The distribution of gender slightly varies with age, with a trend of having more girls at younger ages (\ref{fig:results-festival}, middle, p-value=0.04).
+The appreciation of girls does not correlate with age (p-value=0.48).
+Therefore we attribute the decreasing number of girls with age to the prejudice in our western societies against girls in technical fields, which would affect the decision of older girls and their parents, although we might assume that the interest in robotics should a priori be even for boys and girls.
+The appreciation is very high: the worst note is 4 (10 participants) on a scale of 1 to 6, while 67 participants (57\,\%) give 6.
+The general appreciation correlates neither with age nor with gender (\ref{fig:results-festival}, bottom, p-values 0.44 and 0.63).
+In this survey, we also measured the acquired concepts through a small test.
+The results show that children have understood specific and practiced concepts such as the infrared sensor, but failed to understand fundamental robotics concepts such as the sensory-motor loop.
+This workshop was run by scientists, rather than by professional teachers.
+
+
+
+\section{Conclusion}
+
+Most of the current robotic tools for education capitalize upon existing hardware platforms, programming environments, or robot architectures.
+Because they do not consider all elements at stake, these tools fail to meet the challenges of the field.
+On the contrary, in this paper we presented a system-design approach that tackles these questions in a holistic way.
+The result is the Thymio robot and its surrounding development environment and distribution model.
+Thymio is extremely low-cost with respect to its performances, reflecting our design choices and an open and non-profit development and distribution model.
+
+% Thymio is well documented and allows simple deployment in classes, which simplifies the task of teachers and reduces their training needs.
+% Both Thymio itself and its programming environment provide real-time inspection of the sensor values, allowing an intuitive understanding of robotic processes.
+% These in turn can be used as examples or metaphors of complex real-life systems and interactions.
+% Furthermore, the deployment of Thymio in many schools will allow a long-term analysis of the use of the robot to assess quantitatively the usefulness of the different features.
+% 
+We have validated that Thymio is useful to address the challenges of the field.
+There is a high demand for the robot, proving that its price is sufficiently low to make it attractive to a large public.
+Ten schools are using Thymio and developing curriculums for it, proving its ability to attract the interest of teachers.
+Through public workshops, we have shown that children can learn new things using the robot in about one hour only.
+We have shown statistics demonstrating that Thymio is a gender- and age-neutral robot.
+Finally, we have shown preliminary results on the concepts that children can acquire through their interaction with the robot.
+This builds a path towards a sound investigation of the educational value of robots.
+
+\bibliography{ThymioEdu}
+\bibliographystyle{ieeetr}
+
+%-\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{APPENDIX}
+%
+%questionnaire?
+%
+%\section*{ACKNOWLEDGMENT}
+%
+%??
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
