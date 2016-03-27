@@ -100,7 +100,7 @@ By open source hardware we understand, following the definition of the Open Sour
 In this paper, we show that this concept, implemented as a project in a community of users, developers and producers, brings a very interesting added value to the robot and to the educational methods. 
 This is illustrated by the results achieved with Thymio and is compared with the feedback of a group of engineers active in open source hardware design.
 We can well observe both similarities and differences between our education-centered project and other open source hardware projects, pointing to challenges and opportunities.
-More details on the robot and the related results can be found in conference papers~\cite{festival2011,thymio2012arsi}.  
+More details on the robot and the related results can be found in~\cite{RiedoPhD, magnenat2014}.  
 
 \section{Related Work}
 
@@ -138,16 +138,17 @@ To the best of our knowledge, beside Thymio there are no educational products ex
 For teachers, the motivation to use robotic tools in their classes depends on many factors \cite{chevalier2016}.
 Among them, the availability of material and training plays a key role.
 The BeeBot mentioned previously, because of its radical simplicity, is one of the tools that needs the least training. 
-Moreover its use in learning activities is based on a simple grid, allowing fast and easy integration in existing lessons.
+Moreover its use in learning activities is based on a simple grid on a printed mat on the ground, allowing fast and easy integration in existing lessons.
 These are probably two important factors for its success in schools~\cite{2008highfield,2008demichele} and the availability of a rich set of educational material\footnote{\url{https://www.learningplace.com.au/deliver/content.asp?pid=38840} and \\ \url{http://beebots.skola.edu.mt/}}.
-However, the total lack of sensors reduces the BeeBot to an automaton, easy to use but nearly useless to introduce computational concepts.
+However, the total lack of sensors reduces the BeeBot to an automaton, easy to use but limited to very simple activities for young kids, without much potential in teaching computational thinking or robotics concepts.
 
-For more complex robots, both the development of educational material and the training of teachers requires a very important effort. 
-Beside the development of the material from a pedagogical point of view, education is very dependent from local educational programs and languages. 
-In the particular case of Switzerland, for instance, every of the 26 states composing the confederation has its own school program, and among the states there are three major official languages. 
-Educational material and the related training has therefore to be adapted for each situation.
+For more complex robots, both the development of educational material and the training of teachers requires a very important effort, requiring a good mix between robotics and educational skills. 
+Moreover, educational material changes very much from school to school, as education is very dependent from local educational programs and languages, for instance. 
+In the particular case of Switzerland, for instance, every of the 26 states composing the confederation has its own school program and its own language among the four official ones. 
+Educational material and the related training has therefore to be developed for each situation, which requires a huge effort.
 Even for large companies like LEGO this development is not affordable. 
-LEGO itself is moving in the direction of promoting communities of users \cite{Hienerth2014} and a form of user-producer interaction that is close to those of open hardware projects.
+A solution is to have an active community of users contributing to the development of the material in a distributed manner, adapting the material to the local situation.
+LEGO itself is moving in the direction of promoting communities of users \cite{Hienerth2014} with a user-producer interaction close to those of open hardware projects.
 The open source community regrouping developers, producers and final users is therefore a very interesting model to address the distributed development and sharing of educational material, and the diffusion of training sessions.
 Communities around projects like Arduino are extremely good examples of this type of mechanism \cite{Jamieson2010}.
 
@@ -173,16 +174,18 @@ Communities around projects like Arduino are extremely good examples of this typ
 \end{figure}
 
 
-We designed the Thymio robot along seven main axes: a low price to address a larger number of users, a feature set that suits both genders and multiple ages from young children to adults, a combination of sensors, actuators, and programming features that facilitates learning, a mechanical design that allows creative extensions, a set of ready-to-use behaviors to get a demonstration right out of the box, an accessible programming environment, and an open source  community contributing to the design and disseminating the results.
+We designed the Thymio robot along seven main axes: a low price to address a larger number of users, a feature set that suits both genders and multiple ages from young children to adults, a combination of sensors, actuators, and programming features that facilitates learning, a mechanical design that allows creative extensions by the users themselves, a set of ready-to-use behaviors to get a demonstration right out of the box, an accessible programming environment, and an open source  community contributing to the design and disseminating the results.
 The result is a miniature (10\,cm) differential-wheeled robot suited for use on a desktop.
 The robot is robust enough to be mishandled by children, as it can fall from a table without breaking itself.
 It features a translucent white hull and a wide range of sensors and actuators (see \ref{fig:schematique}).
 The robot embeds a battery, rechargable by \textsc{usb}, that provides an autonomy of about 2 hours.
 
+We start by presenting here the first six main axes, before moving to the next section devoted the open hardware specificities.
+
 \subsection{Low Price}
 
 Our main concern during the mechatronic design of Thymio was to keep a low production cost. 
-Price is a primary factor for the adoption of the robot by schools.
+Price is a primary factor for the adoption of the robot by schools~\cite{kradolfer2014sociological}.
 In our previous experience with designing robots, most of the costs was due to the electronics and the sensors~\cite{thesis_michael}, not to the mechanical parts.
 As we wanted Thymio to be an affordable robot, we selected electronic components with great care and explored different design solutions in order to limit the number of expensive components.
 In particular, we focused on low-cost sensors that allow rich interaction possibilities, with both the environment and the user.
