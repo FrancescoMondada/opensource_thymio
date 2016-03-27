@@ -124,11 +124,11 @@ The e-puck~\cite{mondada2009puck} robot is a robot targeting university-level ed
 Well equipped with sensors and actuators, modular and compact, it can be programmed with professional environments.
 Several simulators allow to run experiments of high complexity. 
 It's main weakness is its high price ($\sim$870\,\$).
-Finch\footnote{http://www.finchrobot.com/} ($\sim$99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
+Finch\footnote{\url{http://www.finchrobot.com/}} ($\sim$99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
 This connection reduces electronics requirements, such as batteries or wireless communication, and allows to implement the control entirely on the computer.
 This results in a very broad set of possible programming languages available, the real force of this robot. 
 On the other hand the cable does not allow real autonomy and mobility of the robot.
-Finally the mBot\footnote{http://www.makeblock.cc/mbot/} is a mobile platform based on the Arduino board. 
+Finally the mBot\footnote{\url{http://www.makeblock.cc/mbot/}} is a mobile platform based on the Arduino board. 
 The very cheap and simple electronics allow to drastically reduce the price of the system ($\sim$75\,\$) but also reduces the perception possibilities to a couple of sensors. 
 
 In respect to these robots, Thymio has a compact size (120~mm), many interaction possibilities, an affordable price and a large set of sensors.
@@ -223,8 +223,8 @@ Moreover, when selecting features we took into consideration the complexity of t
 \subsection{Multi-age and Gender-neutral Feature Set}
 
 While we optimized Thymio for cost, we also targeted a large range of users thanks to an important contribution by industrial designers of the University of Art and Design of Lausanne\footnote{\url{http://www.ecal.ch}}.
-The variety of sensors and ways of interacting with the robot make Thymio accessibly to girls and boys of different age groups.
-The white hull is initially neutral and children can choose their own color using the \textsc{rgb} LEDs.
+The variety of sensors, the multiple ways of interacting with the robot, its hull design, and its customization make Thymio accessible to girls and boys of different age groups.
+The white hull is initially neutral and children can choose their own color using the \textsc{rgb} LEDs or attach accessories to the hull.
 The robot can be used from children as young as 6 years old to adults:
 The youngest play with the robot through a set of basic behaviors (see section \ref{sec:behaviors}) and the older can program it (see section \ref{sec:aseba}).
 The different basic behaviors are selectable using the capacitive buttons and show some of the capabilities of the robot, such as obstacle avoidance, slope climbing, etc.
@@ -232,10 +232,11 @@ By interacting with the different behaviors, for instance by blocking the robot 
 As every behavior has a different color, children can also understand that different \emph{programs} run on the robot.
 Children around 6 can use Thymio as a support for handicrafts or construction.
 For example, they can create kinetic sculptures.
-For children above 9 years old and adults, Thymio is suited to introduce programming.
+For children above 9 years old and adults, Thymio is suited to introduce programming and robotics.
 Learners can start by programming new interactive behaviors and can go on with constructing around the robot and programming a behavior that interplays with the construction.
 High-school and university students can use the robot to learn advanced robotics concepts through the integration with \textsc{ros}~\cite{quigley2009ros}.
 Teachers can use this flexibility of use to adapt the look and the behavior of Thymio to their teaching activities, or even introduce this adaptation as activity in handicraft or computer science lessons.
+Moreover users looking for additional hardware features can interface Thymio with other open hardware devices, such as computer boards\footnote{Interface with a Raspberry PI under \url{https://www.thymio.org/en:thymioexplorer}} or other robotic mechanics\footnote{Interaction with the Poppy open source hardware under \url{https://youtu.be/0otXtF8J_Z4}}.
 Finally, because of the open-source and open-hardware nature of the project, advanced programmers can improve their skills in C by modifying the firmware or in electronics by disassembling the robot.
 
 \subsection{Facilitating Learning}
@@ -243,7 +244,7 @@ Finally, because of the open-source and open-hardware nature of the project, adv
 When designing Thymio, we took care of providing many incentives for the users to learn new things throughout their direct interaction with the robot.
 This translates into specific hardware and software choices.
 
-At the hardware level, we render visible the activity of the sensors by adding a LED next to each, for a total of 39 LEDs.
+At the hardware level, we render visible the activity of the sensors by adding a LED next to each of them, for a total of 39 LEDs.
 These LEDs locally color the hull and allow the user to see immediately where and when the robot perceives a change in its environment.
 There is a LED next to each proximity sensor that lights up as soon as an object is close enough to be seen, and shines brighter the closer the object gets.
 Similarly, a combination of blue and red LEDs show the temperature, and the infrared remote control receiver and the microphone both have LEDs that flash when they detect something.
@@ -253,7 +254,7 @@ Finally, two strong \textsc{rgb} LEDs color the whole top of the robot.
 In addition to a visual feedback, the capacitive buttons also have an acoustic feedback.
 The link between a sensor and its feedback can be turned off when programming the robot to use the LEDs and the loudspeaker for other purposes.
 
-At the software level, our programming environment (see section \ref{sec:aseba}) provides a set of tools enabling beginners to discover progressively the basic rules of programming using a graphical interface, then the construction of a syntax by graphic blocs, and finally a full coding environment with advanced debugging tools, such as real-time inspection of the variables of the robot and plotting features, providing a visual way to understand time-related concepts.
+At the software level, our programming environment (see section \ref{sec:aseba}) provides a set of tools enabling beginners to discover progressively the basic rules of programming using a graphical interface, then the construction of a syntax by graphic blocs, and finally a full text-based coding environment with advanced debugging tools, such as real-time inspection of the variables of the robot and plotting features, providing a visual way to understand time-related concepts.
 
 \subsection{Promoting Creativity}
 \label{sec:crea}
@@ -275,7 +276,7 @@ But paper and cardboard can also radically change the locomotion principle, as i
 The paper structure can be also used to interact with the sensors, as illustrated in the second row of Figure~\ref{fig:example-construction} by the bear, who extends his paw in front of the sensors to drive its iceberg.
 The same fixation points can be used to attach 3D printed customized parts, as illustrated by the winder shown in the fourth row of Figure~\ref{fig:example-construction}.
 Finally one can use paper to create environments, either flat with patterns that can be used in association to the ground sensors (see Figure~\ref{fig:example-construction} bottom) or 3D object, like the trees beside the zombie in Figure~\ref{fig:example-construction}.
-Finally, it is also possible to link several Thymio by software, allowing the creation of complex robotic structures.
+Finally, it is also possible to link several Thymio by software, allowing the coordination of complex multi-Thymio robotic structures.
 
 \begin{figure}
 \includegraphics[width=.49\columnwidth]{figures/orca}\hfill\includegraphics[width=.49\columnwidth]{figures/bat}
@@ -302,8 +303,8 @@ Therefore Thymio provides 6 different basic behaviors (see table \ref{tbl:basic-
 These allow people encountering Thymio for the first time to immediately interact with it, while providing insights into the many possibilities of the robot.
 The behaviors are interactive and oriented towards the user. % SM: FIXME: not clear what "oriented towards the user" means
 For each behavior, the robot's body has a different color, allowing the user to easily recognize it.
-The user can navigate between the colors with the buttons and select the behavior she wants to use.
-Basic behaviors can be exploited in a construction to create reactivity without the use of programming (see Figure~\ref{fig:example-construction}, top).
+The user can navigate between the colors with the buttons and select the behavior she/he wants to use.
+Basic behaviors can be exploited in a construction to create reactivity without the use of programming (see Figure~\ref{fig:example-construction}, the top four paper creations can be used with basic behaviors).
 
 \begin{table}
 \begin{tabularx}{\columnwidth}{@{}llll@{}}
@@ -367,7 +368,7 @@ Among these 25 people, 6 are project leaders, 10 are part of the core design tea
 \subsection{Motivation}
 
 When asked about their motivation to participate to open source hardware projects, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice. 
-A more abstract goal of improving our society is placed at the last position, as mentioned only by few respondents.
+The more abstract goal of improving our society is mentioned only by few respondents.
 
 \begin{figure}
 \centering
@@ -376,13 +377,14 @@ A more abstract goal of improving our society is placed at the last position, as
 \label{fig:motivation}
 \end{figure}
 
-In the Thymio project, most contributors were hired for a research project developing the robot. 
+In the Thymio project, most engineering contributors were hired for a research project developing the robot. 
+Industrial designers also contributed as part of an institutional project.
 Therefore the link with the professional activity and the particular project is evident.
-On another side, the motivation of contributing to society is much stronger in our team, as developing a robot targeting education is a societal goal also.
+On another side, the motivation of contributing to society is much stronger in our team, as developing a robot targeting education has a strong societal component.
 
 It is more interesting to look at what people expect as benefits in participating in such a project.
 Most of the answers mention impact, networking and learning. 
-In these answers we can observe both a technological component in getting better results and impact, and a relational component that is not in the basic definition of open hardware but results from the community created around the project. 
+In these answers we can observe both a technological component in getting better results and impact, and a human-relations component that is not in the basic definition of open hardware but results from the community created around the project. 
 People expect to work with other people to achieve more together, to create a network of competences or users, to learn through new experience and contacts. 
 
 In the Thymio project we had similar expectations. 
@@ -390,6 +392,7 @@ Working together with several partners was for everybody a win-win situation, an
 A wiki\footnote{http://www.thymio.org} has been established as meeting point for the learners, the robot developers, and the teachers.
 It introduces the robot, explains the basic behaviors, gives access to the programming environment and its documentation, and provides code samples and examples of constructions.
 The wiki is open for editing by anyone, and although we initially provided most of the material, the other members of the community have started to contribute.
+One of the most important contribution to the wiki, in term of effort, has been its translation into four languages.
 
 In addition to those elements, in our project we expected another important benefit from open hardware in term of image: we wanted a match between the non-profit nature of the project and the non-profit nature of education in general. 
 
