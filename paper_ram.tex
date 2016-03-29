@@ -454,13 +454,13 @@ In our project we have two different types of hardware: the robot itself and the
 The robot is the expensive part and has a very neutral design, allowing adaptation to specific situations.
 This adaptation is achieved by custom accessories that increase the attraction of the robot in its specific role, enabling activity for different ages and genders.
 
-For the robot itself we opted for the second interpretation of the definition, considering under ``anyone'' only the professional structures able to produce hardware in a professional way, for a reason of price and complexity of the product. 
+For the robot itself we opted for the second interpretation of the definition, considering under ``anyone'' only the professional structures able to mass-produce hardware, for a reason of price and complexity of the product. 
 When looking for the best performance per price ratio, we decided to use techniques that require heavy equipment.
 For instance we decided to produce all mechanical parts by injection molds. 
 This ensures a price per part of some cents, which cannot be achieved by others techniques.
 Letting end-user produce their own parts would results in higher prices for less performances. 
 This choice has another implication: only a core team of highly skilled engineers can contribute to the project. 
-It is not trivial to design a mechanical part that can be molded win the simplest possible way.
+It is not trivial to design a mechanical part that can be molded in the simplest possible way.
 
 For the accessories, less technically challenging and stronger linked with creativity and educational value, we promoted techniques that are accessible to ``anyone'' in the broader sense: paper, cardboard, LEGO constructions and 3D printing, as explained in section~\ref{sec:crea} and illustrated in Figure~\ref{fig:example-construction}.
 This allows a much broader spectrum of contributor, especially among the teachers.
@@ -488,31 +488,34 @@ The open hardware approach gives to the user, or to a generic technician, better
 Supporting this type of operation has an impact on the robot design; for instance Thymio can be easily opened with four standard screws, and we introduced connectors between key elements such as motors, speaker, or the battery and the main printed circuit. 
 
 Another key element in supporting repair by the users are the calibration methods. 
-When choosing very low cost components, we get into large dispersion of characteristics. 
-In our case, for instance, the motors can have very different characteristics, resulting in the robot not going straight when asked to apply the same speed on both wheels. 
-To correct this, one interesting solution is to introduce factory calibration, storing correction factors that are specific for each robot, in the microcontroller memory . 
+When choosing very low cost components, one gets into large dispersion of the characteristics. 
+In our case, for instance, the right and left wheel motors can have very different electrical characteristics, resulting in different speed evaluations and therefore in the robot not going straight when the two motors regulators have the same set speed.
+To correct this problem, one interesting solution is to introduce factory calibration, storing correction factors that are specific for each robot, in the microcontroller memory . 
 To allow the user to replace a broken motor, it is essential to give him also the possibility to re-calibrate the robot and adjust the parameters of the new motors.
 In Thymio, this results in the design and the documentation of calibration processes that can be performed by anyone, getting close to the original definition of open source hardware.
 
-\subsection{Validated added value of open source hardware}
+\subsection{Added value of open source hardware in distribution}
 
 Beside the sale of more than 10'000 robots by a non-profit organization producing it, there are several elements that show a specific advantage of having chosen an open source hardware model.
 The first element is the very high acceptance of the robot by universities and their offices in charge of promotion of science.
 Although these are not the primary user targeted by the robot, these are institutions with high visibility and influence on school programs. 
 In particular INRIA in France and the University of Cambridge in he United Kingdoms decided to use Thymio as tool for promotion of their activities and introduced it into schools.
-In France, INRIA developed several teaching units and supported the training of more than 1000 teachers to the use of this particular robot. 
-This finally resulted in having the Thymio robot included as one of the reference tools for the education of digital science in the reference books of the French Academy of Science and its foundation for promotion of science in education, ``La main \`a la p\^ate.''
+In France, INRIA developed several teaching modules and supported the training of more than 1000 teachers to the use of this particular robot. 
+This finally resulted in having the Thymio robot included as one of the tools chosen for the education of digital science in the reference books of the French Academy of Science and its foundation for promotion of science in education, called ``La main \`a la p\^ate.''
 The fact that Thymio is open source allows these institution to have a better control on the tool they use, as they can ensure maintenance and even further development of it. 
+The impulsion given by the academic institutions has been followed by many teachers who contributed with own teaching material. 
+Up to date one can find more than 50 teaching modules, one large tutorial, and many reports on school activities using Thymio. 
 
 In some cases, the open source nature of this project was a crucial political argument for the choice of this platform.
 In the state of Geneva, the government decided to move toward open source non proprietary tools in education.
 All primary school- and most secondary school computers have been installed with the Ubuntu distribution of Linux. 
 On this operating system the LEGO Mindstorms software tools are not available, and their proprietary nature is not compatible with the philosophy dictated by the government. 
 Thymio was therefore extremely welcome, and the state of Geneva organized own training courses for teachers, ported several educational materials into their curriculum and organized a lending system for all schools that cannot afford to buy the robots.
+Others states are following this model.
 
 Finally the non-profit nature of the project, including the production infrastructure, has contributed to reduce the obstacle toward the acquisition of this platform for many schools, especially at the beginning of the process.
 
-\subsection{Problems of open-source project}
+\subsection{Problems of open-source projects}
 
 \begin{figure}
 \centering
@@ -522,15 +525,15 @@ Finally the non-profit nature of the project, including the production infrastru
 \end{figure}
 
 The very specific structure of an open project has also drawbacks. 
-Asked about problems met in the project, the participants to our survey mention the management of the community, the evolution of the project, the efforts in documentation, production and distribution and the limited resources.
+Asked about problems met in their project, the participants to our survey mention the management of the community, the evolution of the project, the efforts in documentation, production and distribution and the limited resources.
 There are here two kind of problems: one of management of people, the other in the development of the project after the first design.
-The management of the project seems a recurrent problem and is related to the nature of this type of structure, mainly built by academic people with engineering background. 
-Most of the projects, following our survey, are managed by the founder of the initiative and not by the most expert in the field, which is perhaps not the best objective choice.
-It is very difficult to evolve from a phase where the engineering is the core of the project, to a new phase where communication and management play an increasing role.
-The same holds for several other factors, like the efforts in documenting, producing and distributing the product. 
-Also here there is a change of activity from the very appealing design phase, to a phase of documentation and, in some cases, production and distribution which is not at all the same work and requires different skills.
-This requires extra efforts and motivation, which are often missing, especially for jobs like documentation that are not appreciated by engineers.
-In general many respondents to our survey identified the development of the project as a general issue, which summarizes the several aspects mentioned above.
+The management of the project seems a recurrent problem and is related to the nature of this type of structure, mainly very flat and built on academic people with engineering background. 
+Most of the projects, following our survey, are managed by the founder of the initiative and not by the most expert in the field or by a manager, which is perhaps not the best objective choice.
+It is indeed very difficult to evolve from a phase where the engineering is the core of the project, to a new phase where communication and management play an increasing role.
+The same holds for several other factors, like the efforts in documentation, production and distribution of the product. 
+Also here there is a change of activity from the very creative and appealing design phase, to a phase of documentation and, in some cases, production and distribution which is not at all the same type of activity and requires different skills.
+This shift requires extra efforts and motivation, which are often missing, especially for activities like documentation that are not appreciated by engineers.
+In general many respondents to our survey identified the evolution of the project as a general problematic issue, which summarizes the several aspects mentioned above.
 
 In the Thymio project we had very similar issues and tried to addess them by having several partners, each of them specialized in one aspect: design, production and sale, creation of educational material, etc.
 Despite this approach, we had also problems of management of the community, and issues in finding the right long term vision, especially having so many partners. 
