@@ -243,6 +243,7 @@ Thymio finally costs 35\,\$ per unit when produced in a batch of 1\,k units (see
 This allows a selling price of 129\,CHF ($\approx$ 130\,\$).
 
 \subsection{Multi-age and Gender-neutral Feature Set}
+\label{sec:multi}
 
 While we optimized Thymio for cost, we also targeted a large range of users thanks to an important contribution by industrial designers of the University of Art and Design of Lausanne\footnote{\url{http://www.ecal.ch}}.
 The variety of sensors, the multiple ways of interacting with the robot, its hull design, and its customization make Thymio accessible to girls and boys of different age groups.
@@ -316,7 +317,7 @@ Finally, it is also possible to link several Thymio by software, allowing the co
 
 
 
-\subsection{Short time to demo}
+\subsection{Fast access to robotics behaviors}
 \label{sec:behaviors}
 
 Many existing robots need to be built or configured before having the first operational behavior. 
@@ -353,7 +354,9 @@ Thymio runs the Aseba open-source programming environment~\cite{aseba}.
 Aseba is designed to enable novices to program robots easily.
 On the robot side, it provides a lightweight virtual machine that runs on microcontrollers like the PIC24F.
 A virtual machine allows instantaneous upload and safe execution of code.
-On the desktop side, Aseba provides an IDE which allows to program in a purely graphical mode, or using a scripting language (see Figure~\ref{fig:aseba-studio}) or in a mixed way, assembling code in a graphical way using the blockly environment\footnote{\url{https://developers.google.com/blockly/}}.
+On the desktop side, Aseba provides an IDE which allows to program in a purely graphical mode (called VPL), or using a scripting language (see Figure~\ref{fig:aseba-studio}) or in a mixed way, assembling code in a graphical way using the blockly environment\footnote{\url{https://developers.google.com/blockly/}}.
+This allows the IDE to match with the multi-age goal described in section~\ref{sec:multi}.
+
 
 %The Aseba scripting language is a simple, imperative, Matlab-like language providing integers and arrays of integers as data types.
 %Common logical and mathematical operations are available as operators, and additional mathematical functions such as trigonometric ones are available as native functions.
@@ -362,7 +365,8 @@ On the desktop side, Aseba provides an IDE which allows to program in a purely g
 %Events are triggered by the robot's sensors or actuators.
 %The value of the sensors and actuators are available through pre-defined variables and native functions, which are robot-dependent and enumerated dynamically by the robot when the IDE connects.
 
-The IDE integrates a help documentation\footnote{currently English, French, and German}.
+The IDE integrates real-time feedback both graphically under VPL~\cite{Magnenat2015} and displaying variables or graphs in the text mode.
+The IDE also provides a help documentation\footnote{currently English, French, and German}.
 In addition, the wiki pages of the project provide tutorials on programming with Thymio and a detailed description of the programming interface.
 %The latter was designed with consistency in mind: variables and functions are available in namespaces and similar features (such as the different LEDs) are accessed the same way.
 %It also provides native functions for school-level mathematics such as vector operations, trigonometry, statistics and functions such as sorting and random.
