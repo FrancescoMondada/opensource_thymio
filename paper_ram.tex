@@ -107,29 +107,29 @@ More details on the robot and the related results can be found in~\cite{RiedoPhD
 There is a very large number of publications presenting educational robots with different prices and features, from very low-cost systems targeting, for instance, education in Africa~\cite{Rubenstein2015,Gyebi2015} to extremely sophisticated humanoids~\cite{Hood2015,Mazzoni2016}.
 Among those, only very few are commercially available, limiting their validation by education scientists.
 This results in 90\% of publications about validation of educational results made on LEGO Mindstorm~\cite{benitti2012exploring}.
-The LEGO Mindstorm EV3\footnote{\url{http://mindstorms.lego.com}} is expensive ($\sim$400\,\$) but offers a wide range of possibilities, especially at the mechanical level using LEGO bricks and at the software level with its graphical programming environment. 
-At a lower price, LEGO proposes the WeDo system ($\sim$80\,\$).
+The LEGO Mindstorm EV3\footnote{\url{http://mindstorms.lego.com}} is expensive ($\approx$ 400\,\$) but offers a wide range of possibilities, especially at the mechanical level using LEGO bricks and at the software level with its graphical programming environment. 
+At a lower price, LEGO proposes the WeDo system ($\approx$ 80\,\$).
 The WeDo is similar to EV3 but only reads one sensor and controls one actuator and must always be connected to a desktop computer.
-The BeeBot robot\footnote{\url{http://www.beebot.org.uk}} is a cheap ($\sim$90\,\$) autonomous system.
+The BeeBot robot\footnote{\url{http://www.beebot.org.uk}} is a cheap ($\approx$ 90\,\$) autonomous system.
 However, it is not a real robot but rather an automaton: There is no perception of the environment, just a good encoder for precise movements and a simple programming interface based on buttons giving directions for the movements.
 
 Among these widely used robots, none is part of an open source hardware project.
 The only effort in this direction comes from LEGO, that made public all the schematics of the EV3 in an hardware developer kit, to allow the design of extensions. 
 Otherwise, only few educational robots are both used in schools and are issued from an open hardware project:
-Scribbler2, produced and sold by Parallax\footnote{\url{http://www.parallax.com}} ($\sim$180\,\$), is a 188~mm large robot, designed to run on the ground and equipped with few light sensors, one distance sensor, two ground sensors and few LEDs display.
+Scribbler2, produced and sold by Parallax\footnote{\url{http://www.parallax.com}} ($\approx$ 180\,\$), is a 188~mm large robot, designed to run on the ground and equipped with few light sensors, one distance sensor, two ground sensors and few LEDs display.
 It runs on standard AA batteries and has a hacker port for interfacing electronic extensions.
 It is programmable with a graphic or text code interface.  
 The main weakness of Scribbler2 is its performance per price ratio and the limited compatibility with other systems. 
 The e-puck~\cite{mondada2009puck} robot is a robot targeting university-level education.
 Well equipped with sensors and actuators, modular and compact, it can be programmed with professional environments.
 Several simulators allow to run experiments of high complexity. 
-It's main weakness is its high price ($\sim$870\,\$).
-Finch\footnote{\url{http://www.finchrobot.com/}} ($\sim$99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
+It's main weakness is its high price ($\approx$ 870\,\$).
+Finch\footnote{\url{http://www.finchrobot.com/}} ($\approx$ 99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
 This connection reduces electronics requirements, such as batteries or wireless communication, and allows to implement the control entirely on the computer.
 This results in a very broad set of possible programming languages available, the real force of this robot. 
 On the other hand the cable does not allow real autonomy and mobility of the robot.
 Finally the mBot\footnote{\url{http://www.makeblock.cc/mbot/}} is a mobile platform based on the Arduino board. 
-The very cheap and simple electronics allow to drastically reduce the price of the system ($\sim$75\,\$) but also reduces the perception possibilities to a couple of sensors. 
+The very cheap and simple electronics allow to drastically reduce the price of the system ($\approx$ 75\,\$) but also reduces the perception possibilities to a couple of sensors. 
 
 In respect to these robots, Thymio has a compact size (120~mm), many interaction possibilities, an affordable price and a large set of sensors.
 It's design makes the best use of the recent cheap components coming from the explosive growth of the mobile devices market. 
@@ -219,6 +219,28 @@ Indeed, while most of the electronics consists of \textsc{smd} components mounte
 We streamlined the production of plastic parts (Thymio has only 5 parts while our previous prototype had 11) and opted for injection molding. 
 The plastic hull consists of two main parts screwed together to facilitate the vertical assembly and disassembly of the robot.
 Moreover, when selecting features we took into consideration the complexity of the injection mold.
+
+\begin{table}
+\centering
+\begin{tabularx}{\columnwidth}{ll}
+\toprule
+Description & Price (USD)\\
+\midrule
+electronic components & 15\,\$ \\
+microcontroller & 4 \$ \\
+motors & 2 \$ \\
+plastic parts (hull, wheels, and light guides) & 4 \$ \\
+assembling & 8 \$ \\
+transport & 2 \$ \\
+\bottomrule
+Total & 35 \$ \\
+\end{tabularx}
+\caption{Production cost of Thymio.}
+\label{tbl:thymio-price}
+\end{table}
+
+Thymio finally costs 35\,\$ per unit when produced in a batch of 1\,k units (see \ref{tbl:thymio-price}), with fixed fees of 15\,k\,\$ (13\,k\,\$ for the mold and 2\,k\,\$ for the \textsc{ce} certification).
+This allows a selling price of 129\,CHF ($\approx$ 130\,\$).
 
 \subsection{Multi-age and Gender-neutral Feature Set}
 
@@ -361,18 +383,21 @@ This makes the robot suitable for university-level education.
 
 The choice of developing a robot within an open source hardware project has an impact on the robot design and the way this device is used in the community of users. 
 In this section we analyze more in detail the implications of this choice in the context of educational robotics.
-We compare these implications with the result of a survey we did among 25 people active in various open source hardware projects based on a worldwide call for contributions. 
-Among these 25 people, 6 are project leaders, 10 are part of the core design team, 6 are contributors and 3 are enthusiastic users.
-60\% of these respondents are between 25 and 35 years old and 80\% either work in an academic environment or are students. 
+We compare these implications with the result of a survey that got 35 answers from people active in various open source hardware projects based on a worldwide call for contributions. 
+Among these 35 answers, 11 come from project leaders, 13 from core design team members, 8 from contributors and 3 from enthusiastic users.
+54\% of these respondents are between 25 and 35 years old, 26\% between 35 and 50 years old, 9\% are less than 25 years old and 11\% are older than 50.  
+67\% either work in an academic environment or are students. 
+34 of the 35 answers come from male repondents.
+This last point characterizes strongly the hardware developers community. 
 
 \subsection{Motivation}
 
-When asked about their motivation to participate to open source hardware projects, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice. 
+When asked about their motivation to participate to open source hardware projects, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice (see Figure~\ref{fig:motivation}). 
 The more abstract goal of improving our society is mentioned only by few respondents.
 
 \begin{figure}
 \centering
-\includegraphics[width=.7\columnwidth]{figures/motivation}
+\includegraphics[width=\columnwidth]{figures/motivation}
 \caption{Motivation of the people participating to the survey.}
 \label{fig:motivation}
 \end{figure}
@@ -382,7 +407,7 @@ Industrial designers also contributed as part of an institutional project.
 Therefore the link with the professional activity and the particular project is evident.
 On another side, the motivation of contributing to society is much stronger in our team, as developing a robot targeting education has a strong societal component.
 
-It is more interesting to look at what people expect as benefits in participating in such a project.
+It is more interesting to look at what people expect as benefits in participating in such a project (see Figure~\ref{fig:getout}).
 Most of the answers mention impact, networking and learning. 
 In these answers we can observe both a technological component in getting better results and impact, and a human-relations component that is not in the basic definition of open hardware but results from the community created around the project. 
 People expect to work with other people to achieve more together, to create a network of competences or users, to learn through new experience and contacts. 
@@ -398,8 +423,8 @@ In addition to those elements, in our project we expected another important bene
 
 \begin{figure}
 \centering
-\includegraphics[width=.7\columnwidth]{figures/getout}
-\caption{Motivation of the people participating to the survey.}
+\includegraphics[width=\columnwidth]{figures/advantages}
+\caption{Advantages that people participating to the survey perceive by contributing to an open source hardware project.}
 \label{fig:getout}
 \end{figure}
 
@@ -409,16 +434,16 @@ When starting an open source hardware project, one of the typical questions is a
 We will not discuss this matter here, as it is a very common and well covered issue. 
 
 There is another licensing issue which is not well known and that we discovered very late in our project: the constrains of the license of the mechanical and electronic CAD tools. 
-Indeed, asked about this issue, the participants to our survey seem generally not aware of the fact that CAD licenses can be very restrictive about the way the source files can be published.
-Around the half or respondents to our survey, also among the project leaders, state that they were not aware that this could be an issue, and only one third checked the license of their CAD software. 
-Among the respondents, some stated that they did not checked the license because they were sure they can freely publish their design, but half of them are using software not allowing the publication of source files when using educational licenses, and all these respondents are academic or students.
+Indeed, asked about this issue, the participants to our survey seem generally not aware of the fact that CAD licenses can be very restrictive about the way the source files can be published (see Figure~\ref{fig:aware}).
+More than the half or respondents to our survey, and more than 60\% among the project leaders, state that they were not aware that this could be an issue, and only one third checked the license of their CAD software. 
+Among the respondents, some stated that they did not checked the license because they were sure they can freely publish their design, but one third of them are using software not allowing the publication of source files when using educational licenses, and all these respondents are academic or students.
 This issue is very serious, as most contributors of open source hardware projects are academic and use academic or educational licenses. 
 Most licenses do not allow to use the design created with this version of the software for commercial activities. 
 As producing or selling the product is part of the definition of open hardware, these licenses simply forbid publication under the standard open source hardware conditions. 
 
 \begin{figure}
 \centering
-\includegraphics[width=.9\columnwidth]{figures/aware-license}
+\includegraphics[width=\columnwidth]{figures/checklicense}
 \caption{Awarness about CAD tool licenses limitations by people participating to the survey.}
 \label{fig:aware}
 \end{figure}
@@ -437,7 +462,7 @@ The change of policy in CAD files publication that we obtained is a sign of the 
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{figures/table}
-\caption{Publication possibilities as function of the CAD editors, situation in February 2016.}
+\caption{Publication possibilities as function of the CAD editors, situation end of March 2016.}
 \label{fig:editors}
 \end{figure}
 
@@ -468,7 +493,7 @@ This allows a much broader spectrum of contributor, especially among the teacher
 
 \begin{figure}
 \centering
-\includegraphics[width=\columnwidth]{figures/production}
+\includegraphics[width=\columnwidth]{figures/manufacturing}
 \caption{Production methods in the projects mentioned by the people participating to the survey.}
 \label{fig:production}
 \end{figure}
@@ -519,13 +544,13 @@ Finally the non-profit nature of the project, including the production infrastru
 
 \begin{figure}
 \centering
-\includegraphics[width=\columnwidth]{figures/problems}
-\caption{Problems observed by participants to open source hardware projects.}
+\includegraphics[width=\columnwidth]{figures/limitations}
+\caption{Limitations of open source hardware projects observed by participants to open source hardware projects.}
 \label{fig:problems}
 \end{figure}
 
 The very specific structure of an open project has also drawbacks. 
-Asked about problems met in their project, the participants to our survey mention the management of the community, the evolution of the project, the efforts in documentation, production and distribution and the limited resources.
+Asked about problems met in their project (see Figure~\ref{fig:problems}), the participants to our survey mention the management of the community, the evolution of the project, the efforts in documentation, production and distribution and the limited resources.
 There are here two kind of problems: one of management of people, the other in the development of the project after the first design.
 The management of the project seems a recurrent problem and is related to the nature of this type of structure, mainly very flat and built on academic people with engineering background. 
 Most of the projects, following our survey, are managed by the founder of the initiative and not by the most expert in the field or by a manager, which is perhaps not the best objective choice.
@@ -540,35 +565,6 @@ Despite this approach, we had also problems of management of the community, and 
 The long term vision of a sales person is not the same of an engineer, and those confrontation result in conflicts in a community with a very flat hierarchy. 
 A key element that allowed to keep cohesion in our community was to share, among all partners, strong basic values about improvement of society through education.
 
-XXXXXXX historical, should we keep this?
-
-\begin{table}
-\centering
-\begin{tabularx}{\columnwidth}{ll}
-\toprule
-Description & Price (USD)\\
-\midrule
-electronic components & 15\,\$ \\
-microcontroller & 4 \$ \\
-motors & 2 \$ \\
-plastic parts (hull, wheels, and light guides) & 4 \$ \\
-assembling & 8 \$ \\
-transport & 2 \$ \\
-\bottomrule
-Total & 35 \$ \\
-\end{tabularx}
-\caption{Production cost of Thymio.}
-\label{tbl:thymio-price}
-\end{table}
-
-We reached our price target thanks to our careful selection of components and our production in China.
-Thymio costs 35\,\$ per unit to produce in batch of 1\,k units (see \ref{tbl:thymio-price}), with fixed fees of 15\,k\,\$ (13\,k\,\$ for the mold and 2\,k\,\$ for the \textsc{ce} certification).
-This allows a selling price of 100\,CHF ($\approx$ 106\,\$).
-This small ratio of selling-over-production price is made possible by our non-profit business model.
-
-XXXXXXX end of historical
-
-
 
 \section{Conclusion}
 
@@ -578,6 +574,11 @@ Because they do not consider all elements at stake, these tools fail to meet som
 On the contrary, in this paper we presented a global approach that tackles these questions in a holistic way, based on open source and non-profit principles.
 The result is the Thymio robot and its surrounding open source community including engineers, art designers, production and sales people, and teachers.
 The open source hardware and the related contributions are split in two categories: the robot itself, produced by a non-profit organization and requiring very advanced skills in both design and production, and the accessories for activities, based on techniques broadly accessible and with a larger panel of contributors.
+
+The open source hardware development and dissemination of Thymio addresses several of the issues found in educational robotics.
+It allowed to broadly distributed the robot with minimal changes dues to management of intellectual properties, royalties, financial support and so on.
+This was achieved with an excellent match between the philosophy of the project and the one of the community of users in education.
+In particular, the open source approach allow to provide a durable robot, easy to maintain and repair, with at the same time a community of users providing educational material and mutual support.
 
 By making a survey among a panel of people contributing to open source hardware projects, we could observe that our project shares some characteristics with the majority of the projects represented in the survey. 
 We also had problems of management of the community, we chose production and distributions methods that are broadly applied, and we share most of the motivation elements that are behind other projects.
