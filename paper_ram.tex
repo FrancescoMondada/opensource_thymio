@@ -80,7 +80,7 @@ The emotional potential of mobile robots and their varied technology makes them 
 
 Despite this potential, robots are still not widespread in schools as they could be and this for several reasons. Among them we can mention:
 \begin{enumerate}
-\item Although there are many robotic projects developing educational robots, few reach a sufficient maturity to become distributed and accessible to schools. 
+\item Although there are many robotic projects developing innovative and interesting educational robots, few reach a sufficient maturity to become distributed and accessible to schools. 
 \item A robot performing interesting behaviors is a complex piece of technology and therefore expensive. 
 Indeed, for having an educational value and providing an interesting level of interaction, a robot must embed a wide set of sensors and actuators.
 Existing platforms with these features cost several hundred Euros.
@@ -106,23 +106,25 @@ More details on the robot and the related results can be found in~\cite{RiedoPhD
 
 There is a very large number of publications presenting educational robots with different prices and features, from very low-cost systems targeting, for instance, education in Africa~\cite{Rubenstein2015,Gyebi2015} to extremely sophisticated humanoids~\cite{Hood2015,Mazzoni2016}.
 Among those, only very few are commercially available, limiting their validation by education scientists.
-This results in 90\% of publications about validation of educational results made on LEGO Mindstorm~\cite{benitti2012exploring}.
-The LEGO Mindstorm EV3\footnote{\url{http://mindstorms.lego.com}} is expensive ($\approx$ 400\,\$) but offers a wide range of possibilities, especially at the mechanical level using LEGO bricks and at the software level with its graphical programming environment. 
-At a lower price, LEGO proposes the WeDo system ($\approx$ 80\,\$).
-The WeDo is similar to EV3 but only reads one sensor and controls one actuator and must always be connected to a desktop computer.
+This results in 90\% of publications about validation of educational results made on LEGO\textsuperscript{\textregistered} Mindstorms\textsuperscript{\textregistered}~\cite{benitti2012exploring}.
+The LEGO\textsuperscript{\textregistered} Mindstorms\textsuperscript{\textregistered} EV3\footnote{\url{http://mindstorms.lego.com}} is expensive ($\approx$ 400\,\$) but offers a wide range of possibilities, especially at the mechanical level using LEGO\textsuperscript{\textregistered} bricks and at the software level with its graphical programming environment. 
+At a lower price, LEGO\textsuperscript{\textregistered} proposes the WeDo\textsuperscript{\textregistered} system ($\approx$ 80\,\$).
+The WeDo\textsuperscript{\textregistered} is similar to EV3 but only reads one sensor and controls one actuator and must always be connected to a desktop computer.
 The BeeBot robot\footnote{\url{http://www.beebot.org.uk}} is a cheap ($\approx$ 90\,\$) autonomous system.
 However, it is not a real robot but rather an automaton: There is no perception of the environment, just a good encoder for precise movements and a simple programming interface based on buttons giving directions for the movements.
 
 Among these widely used robots, none is part of an open source hardware project.
-The only effort in this direction comes from LEGO, that made public all the schematics of the EV3 in an hardware developer kit, to allow the design of extensions. 
+The only effort in this direction comes from LEGO\textsuperscript{\textregistered}, that made public all the schematics of the EV3 in an hardware developer kit, to allow the design of extensions. 
 Otherwise, only few educational robots are both used in schools and are issued from an open hardware project:
 Scribbler2, produced and sold by Parallax\footnote{\url{http://www.parallax.com}} ($\approx$ 180\,\$), is a 188~mm large robot, designed to run on the ground and equipped with few light sensors, one distance sensor, two ground sensors and few LEDs display.
 It runs on standard AA batteries and has a hacker port for interfacing electronic extensions.
 It is programmable with a graphic or text code interface.  
 The main weakness of Scribbler2 is its performance per price ratio and the limited compatibility with other systems. 
+Moreover there seems to be no real community around its development.
 The e-puck~\cite{mondada2009puck} robot is a robot targeting university-level education.
 Well equipped with sensors and actuators, modular and compact, it can be programmed with professional environments.
 Several simulators allow to run experiments of high complexity. 
+There is an active community of users and developers around it.
 It's main weakness is its high price ($\approx$ 870\,\$).
 Finch\footnote{\url{http://www.finchrobot.com/}} ($\approx$ 99\,\$) is a very simple robot that has been designed around a wired connection to the computer. 
 This connection reduces electronics requirements, such as batteries or wireless communication, and allows to implement the control entirely on the computer.
@@ -135,6 +137,7 @@ In respect to these robots, Thymio has a compact size (120~mm), many interaction
 It's design makes the best use of the recent cheap components coming from the explosive growth of the mobile devices market. 
 To the best of our knowledge, beside Thymio there are no educational products exploiting this and providing many sensors and actuators at a price below 130\,\$.
 
+Among the main target users there are teachers.
 For teachers, the motivation to use robotic tools in their classes depends on many factors \cite{chevalier2016}.
 Among them, the availability of material and training plays a key role.
 The BeeBot mentioned previously, because of its radical simplicity, is one of the tools that needs the least training. 
@@ -142,15 +145,15 @@ Moreover its use in learning activities is based on a simple grid on a printed m
 These are probably two important factors for its success in schools~\cite{2008highfield,2008demichele} and the availability of a rich set of educational material\footnote{\url{https://www.learningplace.com.au/deliver/content.asp?pid=38840} and \\ \url{http://beebots.skola.edu.mt/}}.
 However, the total lack of sensors reduces the BeeBot to an automaton, easy to use but limited to very simple activities for young kids, without much potential in teaching computational thinking or robotics concepts.
 
-For more complex robots, both the development of educational material and the training of teachers require a very important effort, requiring a good mix between robotics and educational skills. 
+For more complex robots, both the development of educational material and the training of teachers require a very important effort, needing a good mix between robotics and educational skills. 
 Moreover, educational material changes very much from school to school, as education is very dependent from local educational programs and languages, for instance. 
-In the particular case of Switzerland, for instance, every of the 26 states composing the confederation has its own school program and its own language among the four official ones. 
-Educational material and the related training have therefore to be developed for each situation, which requires a huge effort.
-Even for large companies like LEGO this development is not affordable. 
+In the particular case of Switzerland, for instance, every of the 26 states composing the confederation has its own school program and its own language among the four national ones. 
+Educational material and the related training have therefore to be adapted to each situation, which requires a huge effort.
+Even for large companies like LEGO\textsuperscript{\textregistered} this development is not affordable. 
 A solution is to have an active community of users contributing to the development of the material in a distributed manner, adapting the material to the local situation.
-LEGO itself is moving in the direction of promoting communities of users \cite{Hienerth2014} with a user-producer interaction close to those of open hardware projects.
+LEGO\textsuperscript{\textregistered} itself is moving in the direction of promoting communities of users \cite{Hienerth2014} with a user-producer interaction close to those of open hardware projects.
 The open source community regrouping developers, producers and final users is therefore a very interesting model to address the distributed development and sharing of educational material, and the diffusion of training sessions.
-Communities around projects like Arduino are extremely good examples of this type of mechanism \cite{Jamieson2010}.
+This model is an extension to education of what already practiced in projects like Arduino~\cite{Jamieson2010}.
 
 %Several initiatives have focused on increasing the rate of females in engineering in general and in robotics in particular~\cite{weinberg2007impact}.
 %Roberta~\cite{2010bredenfeld} is one of the largest and uses the LEGO Minstorms.
@@ -175,9 +178,9 @@ Communities around projects like Arduino are extremely good examples of this typ
 
 
 We designed the Thymio robot along seven main axes: a low price to address a larger number of users, a feature set that suits both genders and multiple ages from young children to adults, a combination of sensors, actuators, and programming features that facilitates learning, a mechanical design that allows creative extensions by the users themselves, a set of ready-to-use behaviors to get a demonstration right out of the box, an accessible programming environment, and an open source  community contributing to the design and disseminating the results.
-The result is a miniature (10\,cm) differential-wheeled robot suited for use on a desktop.
+The result is a miniature (10\,cm in diameter, see Figure~\ref{fig:schematique}) differential-wheeled robot suited for use on a desktop.
 The robot is robust enough to be mishandled by children, as it can fall from a table without breaking itself.
-It features a translucent white hull and a wide range of sensors and actuators (see \ref{fig:schematique}).
+It features a translucent white hull and a wide range of sensors and actuators (see Figure~\ref{fig:schematique} bottom).
 The robot embeds a battery, rechargable by \textsc{usb}, that provides an autonomy of about 2 hours.
 
 We start by presenting here the first six main axes, before moving to the next section devoted the open hardware specificities.
@@ -185,7 +188,7 @@ We start by presenting here the first six main axes, before moving to the next s
 \subsection{Low Price}
 
 Our main concern during the mechatronic design of Thymio was to keep a low production cost. 
-Price is a primary factor for the adoption of the robot by schools~\cite{kradolfer2014sociological}.
+Price is a key factor for the adoption of the robot by schools~\cite{kradolfer2014sociological}.
 In our previous experience with designing robots, most of the costs was due to the electronics and the sensors~\cite{thesis_michael}, not to the mechanical parts.
 As we wanted Thymio to be an affordable robot, we selected electronic components with great care and explored different design solutions in order to limit the number of expensive components.
 In particular, we focused on low-cost sensors that allow rich interaction possibilities, with both the environment and the user.
@@ -239,7 +242,7 @@ Total & 35 \$ \\
 \label{tbl:thymio-price}
 \end{table}
 
-Thymio finally costs 35\,\$ per unit when produced in a batch of 1\,k units (see \ref{tbl:thymio-price}), with fixed fees of 15\,k\,\$ (13\,k\,\$ for the mold and 2\,k\,\$ for the \textsc{ce} certification).
+Thymio finally costs 35\,\$ per unit when produced in a batch of 1\,k units (see Table~\ref{tbl:thymio-price}), with fixed fees of 15\,k\,\$ (13\,k\,\$ for the mold and 2\,k\,\$ for the \textsc{ce} certification).
 This allows a selling price of 129\,CHF ($\approx$ 130\,\$).
 
 \subsection{Multi-age and Gender-neutral Feature Set}
@@ -289,11 +292,11 @@ The robot features a hole in its middle to insert a marker for drawing.
 It also has a slot for an SD card, allowing users to add their own sounds or to load a pre-compiled code by the simple insertion of a dedicated card.
 
 The square format of the hull allows to use the robot as a base for driving the user's own constructions.
-To that end, Thymio is compatible with LEGO bricks:
-There are four attachment positions on the top of the robot and two LEGO Technics crosses on each side.
+To that end, Thymio is compatible with LEGO\textsuperscript{\textregistered} bricks:
+There are four attachment positions on the top of the robot and two LEGO\textsuperscript{\textregistered} Technics crosses on each side.
 Additionally, the two wheels have attachment points, which permits to use them to actuate elements elsewhere in the structure (see Figure~\ref{fig:example-construction}, third row left) or to lift the robot's own weight (see Figure~\ref{fig:example-construction}, third row right).
 Therefore we chose more powerful motors than strictly necessary to move the robot around.
-The same fixation points used for LEGO bricks can be used to attach paper structures.
+The same fixation points used for LEGO\textsuperscript{\textregistered} bricks can be used to attach paper structures.
 Paper can allow to simply change the body shape and add some body movements, as illustrated in Figure~\ref{fig:example-construction} by the orca, opening and closing its mouth while moving forward or by the bat, moving its wings. 
 But paper and cardboard can also radically change the locomotion principle, as illustrated in the second row of Figure~\ref{fig:example-construction} by the zombie, where the robot's wheel activate the legs. 
 The paper structure can be also used to interact with the sensors, as illustrated in the second row of Figure~\ref{fig:example-construction} by the bear, who extends his paw in front of the sensors to drive its iceberg.
@@ -311,7 +314,7 @@ Finally, it is also possible to link several Thymio by software, allowing the co
 \includegraphics[width=.49\columnwidth]{figures/both_half_winder}\hfill\includegraphics[width=.49\columnwidth]{figures/winder_on_thymio2}
 \vskip .5em
 \includegraphics[width=\columnwidth]{figures/5senses}
-\caption{Examples of extensions of the Thymio basic robot with paper or cardboard body extensions (top four images), using LEGO$^{TM}$ structural extensions (third row), using 3D-printed extensions (fourth row) or using a printed environment (bottom).}
+\caption{Examples of extensions of the Thymio basic robot with paper or cardboard body extensions (top four images), using LEGO\textsuperscript{\textregistered} structural extensions (third row), using 3D-printed extensions (fourth row) or using a printed environment (bottom).}
 \label{fig:example-construction}
 \end{figure}
 
@@ -405,12 +408,30 @@ We compare these implications with the result of a survey that got 35 answers fr
 Among these 35 answers, 11 come from project leaders, 13 from core design team members, 8 from contributors and 3 from enthusiastic users.
 54\% of these respondents are between 25 and 35 years old, 26\% between 35 and 50 years old, 9\% are less than 25 years old and 11\% are older than 50.  
 67\% either work in an academic environment or are students. 
-34 of the 35 answers come from male repondents.
-This last point characterizes strongly the hardware developers community. 
+34 of the 35 answers come from male respondents.
 
 \subsection{Motivation}
 
-When asked about their motivation to participate to open source hardware projects, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice (see Figure~\ref{fig:motivation}). 
+We can distinguish two levels of motivation, the institutional and the personal one.
+The institution initiating a project is mainly looking for recognition and/or money. 
+Our group has a good experience in disseminating robotic hardware with the Khepera~\cite{MonFraIen93} and e-puck~\cite{mondada2009puck} robots.
+Khepera was disseminated with a proprietary strategy, e-puck with an open source hardware one.
+Both were targeting similar users and have been sold in similar quantities.
+What we can observe after more than 10 years is that Khepera generated many royalties for the university, but less relative academic visibility than e-puck (see Figure~\ref{fig:khepuck}) .
+The e-puck robot, being open hardware and with an image better linked to the university, generated no income for the university but much more visibility in respect to his diffusion.
+Khepera was more linked with the name of the company producing it, the e-puck robot was nearly not linked with the producer when mentioned in the literature.
+In the case of Thymio, developed in a research project, the institutional motivation was to get visibility more than money. 
+Therefore, based on the past experience, the open source hardware strategy seemed more adapted.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/others_robots}
+\caption{Comparison between mentions in the literature, mention of the manufacturer and citation of the reference paper for two robots disseminated by our lab in the past. It appears that the Khepera robot, distributed with a proprietary strategy, was more linked to the company producing it than the original designers. This is the opposite for the e-puck robot, distributed with an open source license.}
+\label{fig:khepuck}
+\end{figure}
+
+The personal motivation to participate to such a project is very different than the institutional one. 
+When asked about their personal motivation, the people participating to the survey give as main motivation a link to their professional activity and to the specific project, followed by a more general motivation by the nature of the project and finally by the engineering practice (see Figure~\ref{fig:motivation}). 
 The more abstract goal of improving our society is mentioned only by few respondents.
 
 \begin{figure}
@@ -508,7 +529,7 @@ Letting end-user produce their own parts would results in higher prices for less
 This choice has another implication: only a core team of highly skilled engineers can contribute to the project. 
 It is not trivial to design a mechanical part that can be molded in the simplest possible way.
 
-For the accessories, less technically challenging and stronger linked with creativity and educational value, we promoted techniques that are accessible to ``anyone'' in the broader sense: paper, cardboard, LEGO constructions and 3D printing, as explained in section~\ref{sec:crea} and illustrated in Figure~\ref{fig:example-construction}.
+For the accessories, less technically challenging and stronger linked with creativity and educational value, we promoted techniques that are accessible to ``anyone'' in the broader sense: paper, cardboard, LEGO\textsuperscript{\textregistered} constructions and 3D printing, as explained in section~\ref{sec:crea} and illustrated in Figure~\ref{fig:example-construction}.
 This allows a much broader spectrum of contributor, especially among the teachers.
 
 
@@ -561,7 +582,7 @@ Up to date one can find more than 50 teaching modules, one large tutorial, and m
 In some cases, the open source nature of this project was a crucial political argument for the choice of this platform.
 In the state of Geneva, for instance, the government decided to move toward open source non-proprietary tools in education.
 All primary school- and most secondary school computers have been installed with the Ubuntu distribution of Linux. 
-On this operating system the LEGO Mindstorms software tools are not available, and their proprietary nature is not compatible with the philosophy dictated by the government. 
+On this operating system the LEGO\textsuperscript{\textregistered} Mindstorms\textsuperscript{\textregistered} software tools are not available, and their proprietary nature is not compatible with the philosophy dictated by the government. 
 Thymio was therefore extremely welcome, and the state of Geneva organized own training courses for teachers, ported several educational materials into their curriculum and organized a lending system for all schools that cannot afford to buy the robots.
 Others states are starting following this model.
 
