@@ -98,8 +98,8 @@ This strongly limits the potential of robots as general-purpose educational tool
 Open source hardware projects can address several of these issues in a different way than pure commercial products. 
 By open source hardware we understand, following the definition of the Open Source Hardware Association\footnote{\url{http://www.oshwa.org/definition/}}, ``hardware whose design is made publicly available so that anyone can study, modify, distribute, make, and sell the design or hardware based on that design''.
 In this paper, we show that this concept, implemented as a project in a community of users, developers and producers, brings a very interesting added value to the robot and to the educational methods. 
-This is illustrated by the results achieved with Thymio and is compared with the feedback of a group of engineers active in open source hardware design.
-We can well observe both similarities and differences between our education-centered project and other open source hardware projects, pointing to challenges and opportunities.
+This is illustrated by the results achieved with Thymio and is compared with the feedback of a group of robotics engineers active in open source hardware design.
+We can well observe both similarities and differences between our education-centered project and other open source robotic hardware projects, pointing to challenges and opportunities.
 More details on the robot and the related results can be found in~\cite{RiedoPhD, magnenat2014}.  
 
 \section{Related Work}
@@ -203,16 +203,16 @@ A remote control receiver provides additional distant buttons.
 A microphone can record sounds and detect claps. 
 Finally, a thermistor measures temperature.
 Most of these sensors cost less then 0.2\,\$, the most expensive being the accelerometer with a cost of about 0.8\,\$, which is an acceptable price given the possibilities it brings to the robot.
-The omnipresence of this type of sensors in smartphones and compact cameras has drastically lowered their prices over the last decade.
+%The omnipresence of this type of sensors in smartphones and compact cameras has drastically lowered their prices over the last decade.
 We also chose low-cost toy motors and control them in speed (max. 13\,cm/s) using a custom-designed electronics.
 By measuring the back-electromotive force, speed control is possible without additional encoders.
 
 However, choosing the optimal combination of sensors and processor is a difficult problem, as hardware interfaces are limited on a microcontroller and therefore compromises must be made.
 We evaluated several microcontrollers and chose the PIC24F from Microchip because it integrates a USB interface and can drive capacitive touch buttons directly, saving additional components. 
 This microcontroller controls all sensors and actuators, excepted the battery recharging logic, which uses a specific chip for safety reasons.
-This choice of a single microcontroller led us to non-trivial design decisions like using low-cost shift registers to drive the many LEDs.
-Moreover, instead of directly connecting the infrared sensors to an analogical input, we interface them using a comparator that transforms the analogical signal into a binary one with a pulse having a duration proportional to the intensity of the original signal~\cite{wanda}. 
-This design saves \textsc{cpu}-time, reduces power consumption (it allows a shorter infrared pulse than with an analogical design) and allows to use the sensor for communication.  
+%This choice of a single microcontroller led us to non-trivial design decisions like using low-cost shift registers to drive the many LEDs.
+%Moreover, instead of directly connecting the infrared sensors to an analogical input, we interface them using a comparator that transforms the analogical signal into a binary one with a pulse having a duration proportional to the intensity of the original signal~\cite{wanda}. 
+%This design saves \textsc{cpu}-time, reduces power consumption (it allows a shorter infrared pulse than with an analogical design) and allows to use the sensor for communication.  
 
 In addition, we conceived Thymio to fit the requirements of series production.
 This is a very critical choice in open source hardware projects, and we will discuss this issue in detail in the next section.
@@ -252,14 +252,15 @@ While we optimized Thymio for cost, we also targeted a large range of users than
 The variety of sensors, the multiple ways of interacting with the robot, its hull design, and its customization make Thymio accessible to girls and boys of different age groups.
 The white hull is initially neutral and children can choose their own color using the \textsc{rgb} LEDs or attach accessories to the hull.
 The robot can be used from children as young as 6 years old to adults:
-The youngest play with the robot through a set of basic behaviors (see section \ref{sec:behaviors}) and the older can program it (see section \ref{sec:aseba}).
-The different basic behaviors are selectable using the capacitive buttons and show some of the capabilities of the robot, such as obstacle avoidance, slope climbing, etc.
-By interacting with the different behaviors, for instance by blocking the robot with the hand and seeing it avoiding it, children can discover the concept of the sensory-motor loop. 
-As every behavior has a different color, children can also understand that different \emph{programs} run on the robot.
-Children around 6 can use Thymio as a support for handicrafts or construction.
-For example, they can create kinetic sculptures.
+The youngest play with the robot through a set of basic behaviors (see section \ref{sec:behaviors}) and can use Thymio as a support for handicrafts or construction.
+%and the older can program it (see section \ref{sec:aseba}).
+%The different basic behaviors are selectable using the capacitive buttons and show some of the capabilities of the robot, such as obstacle avoidance, slope climbing, etc.
+%By interacting with the different behaviors, for instance by blocking the robot with the hand and seeing it avoiding it, children can discover the concept of the sensory-motor loop. 
+%As every behavior has a different color, children can also understand that different \emph{programs} run on the robot.
+%Children around 6 can use Thymio as a support for handicrafts or construction.
+%For example, they can create kinetic sculptures.
 For children above 9 years old and adults, Thymio is suited to introduce programming and robotics.
-Learners can start by programming new interactive behaviors and can go on with constructing around the robot and programming a behavior that interplays with the construction.
+Learners can start by programming new interactive behaviors (see section \ref{sec:aseba}) and can go on with constructing around the robot and programming a behavior that interplays with the construction.
 High school and university students can use the robot to learn advanced robotics concepts through the integration with \textsc{ros}~\cite{quigley2009ros}.
 Teachers can use this flexibility of use to adapt the look and the behavior of Thymio to their teaching activities, or even introduce this adaptation as activity in handicraft or computer science lessons.
 Moreover users looking for additional hardware features can interface Thymio with other open hardware devices, such as computer boards\footnote{Interface with a Raspberry PI under \url{https://www.thymio.org/en:thymioexplorer}} or other robotic mechanics\footnote{Interaction with the Poppy open source hardware under \url{https://youtu.be/0otXtF8J_Z4}}.
